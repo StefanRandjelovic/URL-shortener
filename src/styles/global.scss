@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// Colors
+
+// Primary
+
+$Cyan: hsl(180, 66%, 49%);
+$Dark-Violet: hsl(257, 27%, 26%);
+
+// Secondary
+
+$Red: hsl(0, 87%, 67%);
+
+// Neutral
+
+$Text-Gray: hsl(0, 0%, 75%);
+$Grayish-Violet: hsl(257, 7%, 63%);
+$Very-Dark-Blue: hsl(255, 11%, 22%);
+$Text-Very-Dark-Violet: hsl(260, 8%, 14%);
+
+html {
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  padding: 20px;
+}

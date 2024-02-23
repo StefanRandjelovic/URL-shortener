@@ -1,0 +1,11 @@
+@import "./global.scss";
+
+.nav.link {
+  color: $Text-Gray;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: $Text-Very-Dark-Violet;
+    cursor: pointer;
+  }
+}

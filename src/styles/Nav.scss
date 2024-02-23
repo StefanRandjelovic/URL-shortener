@@ -1,0 +1,42 @@
+@import "./global.scss";
+
+a {
+  all: unset;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+
+  .left-side {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    a {
+      display: flex;
+
+      img {
+        transition: transform 0.25s ease;
+
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  .right-side {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,29 @@
+@import "./global.scss";
+
+.button {
+  all: unset;
+  background-color: $Cyan;
+  padding: 10px 20px;
+  color: white;
+  transition: all 0.25s ease;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button.pill {
+  border-radius: 200px;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.button.square {
+  border-radius: 5px;
+
+  &:hover {
+    filter: brightness(1.3);
+  }
+}
