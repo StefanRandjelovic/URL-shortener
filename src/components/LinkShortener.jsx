@@ -8,7 +8,7 @@ import "@styles/LinkShortener.scss";
 import { useAtom } from "jotai";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // GLOBAL STATE
 import { shortenedLinks } from "@jotai/store.js";
@@ -17,50 +17,42 @@ const LinkShortener = () => {
   // GLOBAL STATE
   const [linksArr, setLinksArr] = useAtom(shortenedLinks);
 
-  const apiUrl = "https://cleanuri.com/api/v1/shorten";
+  // STATE VARIABLES
+  const [queryURL, setQueryURL] = useState("");
 
-  const handleSubmit = async (event) => {
-    const data = await axios.post(apiUrl, {
-      url: "https://www.youtube.com/",
-    });
+  // FETCHING FUNCTION
+  const handleFetch = async (url) => {
+    const apiUrl = "https://is.gd/create.php?format=simple&url=";
+    const { data } = await axios.get(`${apiUrl}${url}`);
     return data;
   };
 
-  //   const axios = require('axios');
-
-  // const encodedParams = new URLSearchParams();
-  // encodedParams.set('clientId', 'https://www.phind.com/search?home=true');
-
-  // const options = {
-  //   method: 'POST',
-  //   url: 'https://bitlymikilior1v1.p.rapidapi.com/getAppInfo',
-  //   headers: {
-  //     'content-type': 'application/x-www-form-urlencoded',
-  //     'X-RapidAPI-Key': '97b5157d24msh67f49a2c234b43cp10709djsne4262cd31341',
-  //     'X-RapidAPI-Host': 'Bitlymikilior1V1.p.rapidapi.com'
-  //   },
-  //   data: encodedParams,
-  // };
-
-  // try {
-  // 	const response = await axios.request(options);
-  // 	console.log(response.data);
-  // } catch (error) {
-  // 	console.error(error);
-  // }
-
-  const { data } = useQuery({
-    queryKey: ["shortenedURL"],
-    queryFn: handleSubmit,
+  // FETCH RESPONSE HANDLER
+  const { data, refetch, isRefetching, isError } = useQuery({
+    queryKey: ["shortURL"],
+    queryFn: () => handleFetch(queryURL),
+    enabled: false,
   });
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    if (queryURL === "") {
+      return;
+    }
+    refetch();
+  }, [queryURL]);
+
+  isRefetching && console.log(isRefetching, isError);
+  data && console.log(data);
 
   return (
     <section className="shortener-sec">
-      <form className="shortener" onSubmit={handleSubmit}>
+      <form
+        className="shortener"
+        onSubmit={(event) => {
+          event.preventDefault();
+          setQueryURL(event.target.linkShort.value);
+        }}
+      >
         <input
           type="text"
           name="linkShort"
