@@ -1,6 +1,6 @@
 // DEV DEPENDENCIES
-import { atom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 
-const shortenedLinks = atom([]);
+const shortenedLinks = atomWithStorage("links", []);
 
 export { shortenedLinks };
