@@ -11,6 +11,7 @@ export default defineConfig({
       { find: "@components", replacement: "/src/components" },
       { find: "@pages", replacement: "/src/pages" },
       { find: "@jotai", replacement: "/src/jotai" },
+      { find: "@helpers", replacement: "/src/helper-functions" },
     ],
   },
 });
