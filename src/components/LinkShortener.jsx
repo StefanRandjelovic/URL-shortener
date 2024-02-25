@@ -21,6 +21,7 @@ const LinkShortener = () => {
 
   // STATE VARIABLES
   const [queryURL, setQueryURL] = useState("");
+  const [error, setError] = useState(false);
 
   // FETCH RESPONSE HANDLER
   const { data, refetch, isRefetching, isError, isLoading } = useQuery({
@@ -44,26 +45,28 @@ const LinkShortener = () => {
     }
   }, [data]);
 
-  console.log(data);
-  console.log(linksArr);
-
   return (
     <section className="shortener-sec">
       <form
         className="shortener"
         onSubmit={(event) => {
           event.preventDefault();
+          if (event.target.linkShort.value == "") {
+            setError(true);
+          }
           setQueryURL(event.target.linkShort.value);
         }}
       >
         <input
+          onClick={() => setError(false)}
           type="text"
           name="linkShort"
           placeholder="Shorten a link here..."
+          style={error ? { border: "1px solid red" } : null}
         />
         <Button classA={"button square"} text="Shorten It!" />
       </form>
-      {<p id="error">Error</p>}
+      {error && <p id="error">Please add a link</p>}
     </section>
   );
 };
