@@ -1,13 +1,15 @@
 // COMPONENTS
 import Button from "./Button";
 
+// HELPER FUNCTIONS
+import { handleFetch } from "@helpers/helpers.js";
+
 // STYLES
 import "@styles/LinkShortener.scss";
 
 // DEV DEPENDENCIES
 import { useAtom } from "jotai";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 // GLOBAL STATE
@@ -20,15 +22,8 @@ const LinkShortener = () => {
   // STATE VARIABLES
   const [queryURL, setQueryURL] = useState("");
 
-  // FETCHING FUNCTION
-  const handleFetch = async (url) => {
-    const apiUrl = "https://is.gd/create.php?format=simple&url=";
-    const { data } = await axios.get(`${apiUrl}${url}`);
-    return data;
-  };
-
   // FETCH RESPONSE HANDLER
-  const { data, refetch, isRefetching, isError } = useQuery({
+  const { data, refetch, isRefetching, isError, isLoading } = useQuery({
     queryKey: ["shortURL"],
     queryFn: () => handleFetch(queryURL),
     enabled: false,
@@ -41,8 +36,16 @@ const LinkShortener = () => {
     refetch();
   }, [queryURL]);
 
-  isRefetching && console.log(isRefetching, isError);
-  data && console.log(data);
+  useEffect(() => {
+    if (data && linksArr == []) {
+      setLinksArr([{ short: data, long: queryURL }]);
+    } else if (data && linksArr != []) {
+      setLinksArr([...linksArr, { short: data, long: queryURL }]);
+    }
+  }, [data]);
+
+  console.log(data);
+  console.log(linksArr);
 
   return (
     <section className="shortener-sec">
