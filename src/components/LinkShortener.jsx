@@ -32,23 +32,20 @@ const LinkShortener = () => {
       setError(true);
       setErrorMessage("Please add a link");
       return;
-    } else if (
-      arr.includes(event.target.linkShort.value)
+    }
+    if (
+      Object.values(linksArr.map((links) => links.long)).includes(
+        event.target.linkShort.value
       )
-     {
-      console.log(
-        arr.includes(event.target.linkShort.value)
-        )
-      ;
+    ) {
       setError(true);
-      setErrorMessage("You have already shortened that link");
+      setErrorMessage("You have already entered that link");
       return;
     }
     setQueryURL(event.target.linkShort.value);
+    console.log("here");
   };
-
-  linksArr.map((links) => console.log(links.long));
-
+  
   // FETCH RESPONSE HANDLER
   const { data, refetch, isRefetching, isError, isLoading } = useQuery({
     queryKey: ["shortURL"],
