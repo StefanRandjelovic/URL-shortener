@@ -9,11 +9,26 @@
   flex-wrap: wrap;
   row-gap: 15px;
 
-  .longURL {
-    color: $Text-Very-Dark-Violet;
-    text-wrap: wrap;
-  }
+  .leftSide {
+    display: flex;
+    gap: 10px;
 
+    .close {
+      width: 20px;
+      height: 20px;
+      font-size: 2rem;
+      transform: translateX(-10px) translateY(-4px) rotate(315deg);
+
+      &:hover {
+        cursor: pointer;
+        transform: translateX(-10px) translateY(-4px) rotate(315deg) scale(1.1);
+      }
+    }
+    .longURL {
+      color: $Text-Very-Dark-Violet;
+      text-wrap: wrap;
+    }
+  }
   .rightSide {
     display: flex;
     justify-content: space-between;
