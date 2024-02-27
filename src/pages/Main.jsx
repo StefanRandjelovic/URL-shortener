@@ -4,7 +4,7 @@ import LinkShortener from "@components/LinkShortener.jsx";
 import ShortenedLinks from "@components/ShortenedLinks";
 
 // DEV DEPENDENCIES
-import { useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 
 // GLOBAL STATE
 import { shortenedLinks } from "@jotai/store";
@@ -14,7 +14,7 @@ import { sectionStyles } from "@helpers/helpers";
 
 const Main = () => {
   // GLOBAL STATE
-  const linksArr = useAtomValue(shortenedLinks);
+  const [linksArr, setLinksArr] = useAtom(shortenedLinks);
 
   return (
     <>
@@ -25,6 +25,8 @@ const Main = () => {
           {linksArr.length > 0 &&
             linksArr.map((links) => (
               <ShortenedLinks
+                setLinksArr={setLinksArr}
+                linksArr={linksArr}
                 key={crypto.randomUUID()}
                 longURL={links.long}
                 shortURL={links.short}
