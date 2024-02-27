@@ -31,7 +31,9 @@ const LinkShortener = () => {
       /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/;
     if (!badLinkReg.test(event.target.linkShort.value)) {
       setError(true);
-      setErrorMessage("Enter a valid link, a valid link shoud start with http or https");
+      setErrorMessage(
+        "Enter a valid link, a valid link shoud start with http or https"
+      );
       return;
     }
     if (event.target.linkShort.value == "") {
@@ -85,7 +87,11 @@ const LinkShortener = () => {
         onSubmit={() => handleSubmit(event, linksArr)}
       >
         <input
-          onClick={() => setError(false)}
+          onDoubleClick={(event) => {
+            event.stopPropagation();
+            event.target.value = "";
+            setError(false);
+          }}
           type="text"
           name="linkShort"
           placeholder="Shorten a link here..."
