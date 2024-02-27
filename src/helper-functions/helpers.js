@@ -2,10 +2,27 @@
 import axios from "axios";
 
 // FETCHING FUNCTION - LinkShortener.jsx
+const api = axios.create({
+  baseURL: "https://is.gd/create.php?format=simple&url=",
+});
+
+api.interceptors.response.use(
+  response => response,
+  error => {
+    console.log(error.message)
+    return Promise.reject(error.message)
+  }
+)
+
 const handleFetch = async (url) => {
-  const apiUrl = "https://is.gd/create.php?format=simple&url=";
-  const { data } = await axios.get(`${apiUrl}${url}`);
-  return data;
+  try {
+    const Api = "https://is.gd/create.php?format=simple&url="
+    const { data } = await api.get(`${Api}${url}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
 };
 
 // SHORTENED LINK COPYING FUNCTION - ShortenedLinks.jsx
