@@ -27,7 +27,13 @@ const LinkShortener = () => {
   // HANDLE SUBMIT
   const handleSubmit = (event, arr) => {
     event.preventDefault();
-    console.log(event.target.linkShort.value);
+    const badLinkReg =
+      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/;
+    if (!badLinkReg.test(event.target.linkShort.value)) {
+      setError(true);
+      setErrorMessage("Enter a valid link, a valid link shoud start with http or https");
+      return;
+    }
     if (event.target.linkShort.value == "") {
       setError(true);
       setErrorMessage("Please add a link");
@@ -43,9 +49,8 @@ const LinkShortener = () => {
       return;
     }
     setQueryURL(event.target.linkShort.value);
-    console.log("here");
   };
-  
+
   // FETCH RESPONSE HANDLER
   const { data, refetch, isRefetching, isError, isLoading } = useQuery({
     queryKey: ["shortURL"],
@@ -61,6 +66,11 @@ const LinkShortener = () => {
   }, [queryURL]);
 
   useEffect(() => {
+    if (data && data.startsWith("Request failed")) {
+      setError(true);
+      setErrorMessage("Enter a valid link");
+      return;
+    }
     if (data && linksArr == []) {
       setLinksArr([{ short: data, long: queryURL }]);
     } else if (data && linksArr != []) {
