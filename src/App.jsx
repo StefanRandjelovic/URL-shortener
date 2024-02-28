@@ -11,15 +11,13 @@ import Navbar from "@components/Nav";
 function App() {
   return (
     <>
-      <main>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/under_construction" element={<UnderConstruction />} />
-          </Routes>
-        </Router>
-      </main>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/under_construction" element={<UnderConstruction />} />
+        </Routes>
+      </Router>
     </>
   );
 }
