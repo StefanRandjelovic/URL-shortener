@@ -7,16 +7,16 @@ const api = axios.create({
 });
 
 api.interceptors.response.use(
-  response => response,
-  error => {
-    console.log(error.message)
-    return Promise.reject(error.message)
+  (response) => response,
+  (error) => {
+    console.log(error.message);
+    return Promise.reject(error.message);
   }
-)
+);
 
 const handleFetch = async (url) => {
   try {
-    const Api = "https://is.gd/create.php?format=simple&url="
+    const Api = "https://is.gd/create.php?format=simple&url=";
     const { data } = await api.get(`${Api}${url}`);
     return data;
   } catch (error) {
@@ -47,12 +47,49 @@ const handleCopy = async (event) => {
   }
 };
 
-// SECTION STYLES - Main.jsx
-const sectionStyles = {
-  display: "flex",
-  flexDirection: "column",
-  maxWidth: "1440px",
-  margin: "0 auto",
+// INSTANCE DELETING FUNCTION - LinkShortener.jsx
+const handleDelete = (event, linksArr, setLinksArr) => {
+  event.stopPropagation();
+  const x = Object.values(linksArr.map((links) => links.long)).indexOf(
+    event.target.parentElement.querySelector(".longURL").innerHTML
+  );
+  linksArr.splice(x, 1);
+  setLinksArr([...linksArr]);
 };
 
-export { handleFetch, handleCopy, sectionStyles };
+// HANDLE SUBMIT - LinkShortener.jsx
+const handleSubmit = (
+  event,
+  linksArr,
+  setQueryURL,
+  setError,
+  setErrorMessage
+) => {
+  event.preventDefault();
+  const badLinkReg =
+    /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/;
+  if (!badLinkReg.test(event.target.linkShort.value)) {
+    setError(true);
+    setErrorMessage(
+      "Enter a valid link, a valid link shoud start with http or https"
+    );
+    return;
+  }
+  if (event.target.linkShort.value == "") {
+    setError(true);
+    setErrorMessage("Please add a link");
+    return;
+  }
+  if (
+    Object.values(linksArr.map((links) => links.long)).includes(
+      event.target.linkShort.value
+    )
+  ) {
+    setError(true);
+    setErrorMessage("You have already entered that link");
+    return;
+  }
+  setQueryURL(event.target.linkShort.value);
+};
+
+export { handleFetch, handleCopy, handleDelete, handleSubmit };
