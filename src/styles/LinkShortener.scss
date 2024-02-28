@@ -1,7 +1,9 @@
 @import "./global.scss";
 
 .shortener-sec {
-  margin: 75px auto 15px auto;
+  position: absolute;
+  top: -63px;
+  margin: 0 auto -40px auto;
   display: flex;
   flex-direction: column;
   max-width: 1440px;
