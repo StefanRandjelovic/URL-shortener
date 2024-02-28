@@ -1,5 +1,5 @@
 // HELPER FUNCTIONS
-import { handleCopy } from "@helpers/helpers.js";
+import { handleCopy, handleDelete } from "@helpers/helpers.js";
 
 // STYLES
 import "@styles/ShortenedLinks.scss";
@@ -8,20 +8,14 @@ import "@styles/ShortenedLinks.scss";
 import Button from "./Button";
 
 const ShortenedLinks = ({ longURL, shortURL, linksArr, setLinksArr }) => {
-  // INSTANCE DELETING FUNCTION
-  const handleDelete = (event) => {
-    event.stopPropagation();
-    const x = Object.values(linksArr.map((links) => links.long)).indexOf(
-      event.target.parentElement.querySelector(".longURL").innerHTML
-    );
-    linksArr.splice(x, 1);
-    setLinksArr([...linksArr]);
-  };
-
   return (
     <div className="shortened-links" onClick={handleCopy}>
       <div className="leftSide">
-        <p onClick={handleDelete} className="close" title="Delete this entry">
+        <p
+          onClick={() => handleDelete(event, linksArr, setLinksArr)}
+          className="close"
+          title="Delete this entry"
+        >
           +
         </p>
         <p className="longURL">{longURL}</p>
