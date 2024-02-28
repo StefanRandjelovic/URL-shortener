@@ -3,11 +3,13 @@
 
 .shortened-links {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  flex-wrap: wrap;
   row-gap: 15px;
+  background-color: white;
+  border-radius: 5px;
 
   .leftSide {
     display: flex;
