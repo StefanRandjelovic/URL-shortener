@@ -2,7 +2,7 @@
 import Button from "./Button";
 
 // HELPER FUNCTIONS
-import { handleFetch } from "@helpers/helpers.js";
+import { handleFetch, handleSubmit } from "@helpers/helpers.js";
 
 // STYLES
 import "@styles/LinkShortener.scss";
@@ -23,35 +23,6 @@ const LinkShortener = () => {
   const [queryURL, setQueryURL] = useState("");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  // HANDLE SUBMIT
-  const handleSubmit = (event, arr) => {
-    event.preventDefault();
-    const badLinkReg =
-      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/;
-    if (!badLinkReg.test(event.target.linkShort.value)) {
-      setError(true);
-      setErrorMessage(
-        "Enter a valid link, a valid link shoud start with http or https"
-      );
-      return;
-    }
-    if (event.target.linkShort.value == "") {
-      setError(true);
-      setErrorMessage("Please add a link");
-      return;
-    }
-    if (
-      Object.values(linksArr.map((links) => links.long)).includes(
-        event.target.linkShort.value
-      )
-    ) {
-      setError(true);
-      setErrorMessage("You have already entered that link");
-      return;
-    }
-    setQueryURL(event.target.linkShort.value);
-  };
 
   // FETCH RESPONSE HANDLER
   const { data, refetch, isRefetching, isError, isLoading } = useQuery({
@@ -84,7 +55,8 @@ const LinkShortener = () => {
     <section className="shortener-sec">
       <form
         className="shortener"
-        onSubmit={() => handleSubmit(event, linksArr)}
+        onSubmit={() => handleSubmit(event, linksArr, setQueryURL, setError, setErrorMessage)
+        }
       >
         <input
           onDoubleClick={(event) => {
