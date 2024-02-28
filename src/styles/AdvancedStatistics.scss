@@ -1,0 +1,53 @@
+// STYLES
+@import "@styles/global.scss";
+
+.advanced-statistics {
+  max-width: 1440px;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  .upper-portion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    h1 {
+      color: $Very-Dark-Blue;
+      font-size: 2rem;
+    }
+
+    p {
+      max-width: 525px;
+      text-align: center;
+      color: $Grayish-Violet;
+    }
+  }
+
+  .lower-portion {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    min-height: 290px;
+    justify-content: space-between;
+    align-items: center;
+
+    hr {
+      border: 5px solid $Cyan;
+      position: absolute;
+      width: 90%;
+      top: 40%;
+      left: 5%;
+    }
+
+    .card:first-of-type{
+      align-self: self-start;
+    }
+
+    .card:last-of-type{
+      align-self:flex-end;
+    }
+  }
+}
