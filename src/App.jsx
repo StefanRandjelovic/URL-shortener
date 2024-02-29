@@ -7,6 +7,7 @@ import UnderConstruction from "@pages/UnderConstruction";
 
 // COMPONENTS
 import Navbar from "@components/Nav";
+import Footer from "@components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/under_construction" element={<UnderConstruction />} />
         </Routes>
+        <Footer />
       </Router>
     </>
   );
