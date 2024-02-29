@@ -1,0 +1,21 @@
+// STYLES
+@import "@styles/global.scss";
+
+.section {
+  display: flex;
+  flex-direction: column;
+  color: $Text-Gray;
+
+  h3 {
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  a {
+    transition: all 0.25s ease;
+    &:hover {
+      color: $Cyan;
+      cursor: pointer;
+    }
+  }
+}
