@@ -16,4 +16,48 @@ const advancedStatisticsArr = [
   },
 ];
 
-export { advancedStatisticsArr };
+const footerLinks = [
+  {
+    id: 1,
+    h3: "Features",
+    LinkS: "Link Shortening",
+    LinksB: "Branded Links",
+    Analytics: "Analytics",
+  },
+  {
+    id: 2,
+    h3: "Resources",
+    Blog: "Blog",
+    Developers: "Developers",
+    Support: "Support",
+  },
+  {
+    id: 3,
+    h3: "Company",
+    About: "About",
+    Team: "Our Team",
+    Careers: "Careers",
+    Contact: "Contact",
+  },
+];
+
+const footerSocialMedia = [
+  {
+    img: "src/images/icon-facebook.svg",
+    link: "https://www.facebook.com/",
+  },
+  {
+    img: "src/images/icon-twitter.svg",
+    link: "https://twitter.com/",
+  },
+  {
+    img: "src/images/icon-pinterest.svg",
+    link: "https://www.pinterest.com/",
+  },
+  {
+    img: "src/images/icon-instagram.svg",
+    link: "https://www.instagram.com/",
+  },
+];
+
+export { advancedStatisticsArr, footerLinks, footerSocialMedia };
