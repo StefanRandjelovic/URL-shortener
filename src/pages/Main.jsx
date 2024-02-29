@@ -6,6 +6,7 @@ import Description from "@components/Description.jsx";
 import LinkShortener from "@components/LinkShortener.jsx";
 import ShortenedLinks from "@components/ShortenedLinks";
 import AdvancedStatistics from "@components/AdvancedStatistics";
+import LinksBooster from "@components/LinksBooster";
 
 // DEV DEPENDENCIES
 import { useAtom } from "jotai";
@@ -36,6 +37,7 @@ const Main = () => {
             ))}
         </section>
         <AdvancedStatistics />
+        <LinksBooster />
         </section>
       </main>
     </>
