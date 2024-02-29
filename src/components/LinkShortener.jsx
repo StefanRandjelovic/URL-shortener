@@ -52,10 +52,11 @@ const LinkShortener = () => {
   }, [data]);
 
   return (
-    <section className="shortener-sec">
+    <section className="shortener-sec" id="sc">
       <form
         className="shortener"
-        onSubmit={() => handleSubmit(event, linksArr, setQueryURL, setError, setErrorMessage)
+        onSubmit={() =>
+          handleSubmit(event, linksArr, setQueryURL, setError, setErrorMessage)
         }
       >
         <input
