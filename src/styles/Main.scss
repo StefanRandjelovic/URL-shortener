@@ -2,13 +2,14 @@
 @import '@styles/global.scss';
 
 main {
-  padding: 20px;
+  padding: 30px;
 }
 
 .gray {
     position: relative;
-  margin: 0 -25px -25px -25px;
+  margin: 0 -30px -35px -30px;
   background-color: $Text-Gray-Lighter;
+  padding: 0 30px;
 }
 
 .shortened-links-section{
