@@ -9,6 +9,9 @@ import UnderConstruction from "@pages/UnderConstruction";
 import Navbar from "@components/Nav";
 import Footer from "@components/Footer";
 
+// STYLES
+import "@styles/media-queries.scss";
+
 function App() {
   return (
     <>
