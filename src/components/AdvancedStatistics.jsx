@@ -28,6 +28,7 @@ const AdvancedStatistics = () => {
           />
         ))}
         <hr />
+        <hr id="media-hr"/>
       </div>
     </div>
   );
