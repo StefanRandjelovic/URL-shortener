@@ -9,6 +9,9 @@ import { Link } from "react-router-dom";
 // STYLES
 import "@styles/Nav.scss";
 
+// SVG
+import Menu from "@images/menu.svg";
+
 const Navbar = () => {
   const navLinks = ["Features", "Pricing", "Resources"];
   const navAccount = ["Login", "Sign Up"];
@@ -29,6 +32,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="right-side">
+          <img id='menu' src={Menu} alt="Menu" />
           <Link to="/under_construction">
             <Anchor classA={"nav link"} text={navAccount[0]} />
           </Link>
