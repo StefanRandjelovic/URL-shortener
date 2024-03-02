@@ -41,6 +41,52 @@ nav {
 
     #menu {
       display: none;
+
+      &:hover{
+        cursor: pointer;
+        transform: scale(1.03);
+      }
+
+      &:active{
+        transform: scale(0.95);
+      }
     }
+  }
+
+  .menu-modal {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90%;
+    background-color: $Dark-Violet;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+    gap: 10px;
+    border-radius: 10px;
+    animation: modalShow 0.25s ease-in-out;
+
+    #modal-button{
+      width: 80%;
+      display: flex;
+      justify-content: center;
+    }
+
+    hr {
+      width: 80%;
+      border-color: $Grayish-Violet;
+    }
+  }
+}
+
+// ANIMATION
+@keyframes modalShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
