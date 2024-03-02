@@ -8,6 +8,12 @@
   }
 }
 
+@media only screen and (max-width: 1050px) {
+  .description{
+    flex-direction: column-reverse;
+  }
+}
+
 @media only screen and (max-width: 880px) {
   .advanced-statistics {
     .lower-portion {
@@ -78,6 +84,10 @@
         display: block;
         width: 45px;
       }
+    }
+
+    .menu-modal {
+      display: flex;
     }
   }
 }
