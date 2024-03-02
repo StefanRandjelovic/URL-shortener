@@ -60,6 +60,9 @@ const LinkShortener = () => {
         }
       >
         <input
+          onInput={(event) => {
+            setError(false);
+          }}
           onDoubleClick={(event) => {
             event.stopPropagation();
             event.target.value = "";
@@ -68,7 +71,7 @@ const LinkShortener = () => {
           type="text"
           name="linkShort"
           placeholder="Shorten a link here..."
-          style={error ? { border: "1px solid red" } : null}
+          style={error ? { border: "1px solid rgb(244, 98, 98)" } : null}
         />
         <Button classA={"button square"} text="Shorten It!" />
       </form>
