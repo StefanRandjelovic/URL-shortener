@@ -9,3 +9,13 @@
     cursor: pointer;
   }
 }
+
+.nav.link.menu {
+  color: white;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: $Text-Gray;
+    cursor: pointer;
+  }
+}
