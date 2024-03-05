@@ -25,7 +25,7 @@ const LinkShortener = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   // FETCH RESPONSE HANDLER
-  const { data, refetch, isRefetching, isError, isLoading } = useQuery({
+  const { data, refetch, isRefetching, isError } = useQuery({
     queryKey: ["shortURL"],
     queryFn: () => handleFetch(queryURL),
     enabled: false,
@@ -76,6 +76,7 @@ const LinkShortener = () => {
         <Button classA={"button square"} text="Shorten It!" />
       </form>
       {error && <p id="error">{errorMessage}</p>}
+      {isRefetching && <p id="loading">Loading...</p>}
     </section>
   );
 };
