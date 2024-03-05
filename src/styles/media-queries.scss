@@ -9,7 +9,7 @@
 }
 
 @media only screen and (max-width: 1050px) {
-  .description{
+  .description {
     flex-direction: column-reverse;
   }
 }
@@ -141,6 +141,16 @@
   }
 }
 
+@media only screen and (max-width: 540px) {
+  .shortener-sec {
+    padding-top: 45px;
+    #error {
+      font-size: 0.65rem;
+      padding-right: 5px;
+    }
+  }
+}
+
 @media only screen and (max-width: 520px) {
   .shortened-links {
     font-size: 0.7rem;
@@ -170,6 +180,11 @@
 
 @media only screen and (max-width: 460px) {
   .advanced-statistics {
+    .upper-portion {
+      h1 {
+        text-align: center;
+      }
+    }
     .lower-portion {
       #media-hr {
         display: block;
@@ -192,6 +207,104 @@
         max-width: 400px;
         max-height: 320px;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .shortened-links {
+    .longURL {
+      font-size: 0.55rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .description {
+    .dsc-right-side {
+      img {
+        max-width: 320px;
+        max-height: 240px;
+      }
+    }
+  }
+  .advanced-statistics {
+    .lower-portion {
+      hr {
+        top: 900px;
+      }
+      #media-hr {
+        top: 400px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 385px) {
+  .shortened-links {
+    .longURL {
+      font-size: 0.5rem;
+    }
+    .rightSide {
+      align-self: flex-start;
+    }
+  }
+}
+
+@media only screen and (max-width: 365px) {
+  .shortened-links {
+    .longURL {
+      font-size: 0.45rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .shortened-links {
+    .longURL {
+      font-size: 0.4rem;
+    }
+  }
+  .advanced-statistics {
+    .lower-portion {
+      .card {
+        min-width: 200px;
+        padding: 60px 20px 20px 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 310px) {
+  .shortened-links {
+    .longURL {
+      font-size: 0.35rem;
+    }
+  }
+  .description {
+    .dsc-right-side {
+      img {
+        max-width: 240px;
+        max-height: 160px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .shortener-sec {
+    padding-top: 45px;
+    #error {
+      font-size: 0.55rem;
+      padding-right: 5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .shortened-links {
+    .longURL {
+      font-size: 0.3rem;
     }
   }
 }
